@@ -1,0 +1,186 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Tahoma;
+  background-image: url("/sky.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Keep the body from scrolling */
+}
+
+/* Main Window */
+#main-window {
+  margin-top: 5vh;
+  margin-left: 5vw;
+  width: 50vw;
+  min-height: 30vh; /* Set minimum height */
+  max-height: 60vh; /* Set maximum height */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Keep content inside the window */
+}
+
+/* Window Body: Set to Flex */
+.window-body {
+  display: flex;
+  flex-grow: 1;
+  min-height: 100%; /* Make sure it fills the parent height */
+}
+
+/* Left Panel: Directory Tree */
+.left-panel {
+  background-color: #f0f0f0; /* Light gray background */
+  width: 200px;
+  min-width: min-content;
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Right Panel: Content */
+.right-panel {
+  flex-grow: 1;
+  background: #fff;
+  padding: 20px;
+  border-left: 1px solid #ADD8E6; /* Light blue border */
+  overflow-y: auto; /* Scroll content if it exceeds the available height */
+  box-sizing: border-box;
+}
+
+/* Restore Original Styles for Header Window */
+#header-window {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-width: 19vw;
+  max-width: 40%;
+  margin: 0 auto;
+  margin-top: 3vh;
+  width: 2vw;
+}
+
+/* Restore Original Styles for Embed Player */
+#embed-container {
+  position: absolute;
+  bottom: 10vh;
+  right: 5%;
+  padding-left: 2px;
+  padding-right: 2px;
+  width: 30vw;
+  height: auto;
+  min-height: 2vh;
+  min-width: 30vw;
+}
+
+/* Responsive Design */
+
+@media screen and (max-width: 1080px) {
+
+  body {
+    overflow-y: auto;
+  }
+
+  .left-panel {
+    display: none;
+  }
+  
+  #header-window {
+    width: 100%;
+    margin: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    
+    max-width: 100vw;
+    z-index: 1000;
+  }
+
+  #embed-container {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    transform: translateX(0);
+    padding-left: 2px;
+    padding-right:2px;
+    width: 100%;
+    height: auto;
+    min-height: 2vh;
+    margin-top: 2vh;
+    min-width: 20vw;
+  }
+
+  #main-window {
+    width: 100%;
+    margin-top: 2vh;
+    margin-left: 0;
+  }
+
+}
+/* Header Buttons */
+.header-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 15px;
+  gap: 1vw;
+  flex-grow: 4;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-buttons-container button {
+  padding: 10px 20px;
+  margin: 0 5px;
+}
+
+.window-search-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tree-view {
+  height: 100%;
+  min-width: fit-content;
+}
+
+[role="tabpanel"] {
+  flex-grow: 2;
+}
+
+/* Folder */
+
+#homework-folder {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.icon {
+  text-align: center;
+  padding: 5px;
+  height: fit-content;
+  width: fit-content;
+  cursor: pointer;
+  max-width: min-content;
+  display: inline-block; /* Make anchor behave like a block element */
+}
+
+.icon img {
+  width: 50px;
+  height: 50px;
+}
+
+.icon:hover {
+  background-color: #f0f0f0;
+
+}
+
+
