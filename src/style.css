@@ -16,6 +16,12 @@ body {
   overflow: hidden; /* Keep the body from scrolling */
 }
 
+#command-terminal .window-body {
+  /* Set the terminal to parent width and not overflow */
+  width: 100%;
+  overflow: auto;
+}
+
 /* Main Window */
 #main-window {
   margin-top: 5vh;

@@ -1,0 +1,112 @@
+
+<div id="main-window" class="window">
+    <div class="title-bar">
+      <div class="title-bar-text">Check List</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="window-body">
+      <div class="left-panel">
+        <ul class="tree-view">
+          <li>Assignment 4</li>
+          <li>
+            <ul>
+              <li>By Wai Hlaing</li>
+              <li>Completed 9/25/24</li>
+            </ul>
+
+          </li>
+        </ul>
+      </div>
+      <div class="right-panel">
+        <h2>Week 4 Assignment</h2>
+        <a class="icon" href="https://taper.badquar.to/11/palallel.html" target="_blank">
+          <img src="/link_icon.png" alt="A globe icon">
+          <p>link_to_<br>palallel_lines_<br>site.html</p>
+      </a>
+        <br>
+        <h4>Palallel Lines</h4>
+        <br>
+        <p>
+            The site is interesting with fun javascripts to decipher. I haven't fully figured out the entire code but I do have a general idea of how the site animates and what the shortened var names represent.
+        </p>
+        <br>
+        <h4>Breakdown</h4>
+        <br>
+        <p>
+          The code is a little bit hard to read but after staring at it for a while, I was able to figure out some of what it does. The B var is the array for the text, the bottom P function animates using the X and Y properties every 999ms so around a 1s
+          the X and Y variables have the .a and .b classes which are the two lines of text to be animated so they are being passed in differently with the B[0 or 1] Array access for different lines of text.
+          The general p function is the main animation loop, it adjusts the initial rotation, font size, and the content. Some parts I don't understand are the "["一", "二", "三"][f(r() * 3)]" line and how it relates to the program.
+          Even though the code is kind of hard to decipher, I think I can recreate it with a bit more time and playing around with it.
+        </p>
+        <br>
+        <div id="command-terminal" class="window-body">
+          <pre>Microsoft&#10094;R&#10095; Windows DOS 
+      &#10094;C&#10095; Copyright Microsoft Corp 1990-2001.
+            <br>C:&#92;WINDOWS&#92;SYSTEM32> type palellel.js
+            <br>C:&#92;WINDOWS&#92;SYSTEM32> 
+            <p>
+              D = document;
+              style = D.createElement("style");
+              style.innerHTML =
+                "body{background-color:#ff0;font-family:sans-serif}
+                .a,.b{font-weight:bold;
+                      color:#f00;
+                      text-shadow: 2px 2px #f0f; 
+                      position:absolute;
+                      top:30%;
+                      left:30%;
+                      text-decoration:underline 5px}
+                .c{color:#00f}";
+              D.head.appendChild(style);
+              q = "querySelectorAll";
+              c = D[q](".a");
+              x = D[q](".b");
+              B = [
+                "occurring or existing at the same time or in a similar way; corresponding.",
+                "一平面上の二直線、または直線と平面、あるいは平面と平面とが、どこまで延長しても交わらないこと。また、そのさま。",
+                "(of lines, planes, or surfaces) side by side and having the same distance continuously between them.",
+                "二つ以上のものが同時に行われること。",
+              ];
+              M = Math;
+              r = M.random;
+              f = M.floor;
+              p = (X) => {
+                for (a of X.c) {
+                  h = a.innerHTML;
+                  if (h == "") X.d = r() * 360;
+                  s = a.style;
+                  if (h.length < 2) s.transform = "rotate(" + X.d + "deg)";
+                  s.fontSize = (s.zIndex = M.max(10, 5000 / (h.length + 1))) + "%";
+                  if (X.b == h) {
+                    o = f(r() * 4);
+                    X.b = B[o];
+                    q = f(r() * B[o].length);
+                    B[o] =
+                      B[o].substring(0, q) +
+                      ["一", "二", "三"][f(r() * 3)] +
+                      B[f(r() * 4)].substring(q + 1);
+                  } else if (X.b.startsWith(h)) a.innerHTML += X.b[h.length];
+                  else a.innerHTML = h.substring(0, h.length - 1);
+                }
+              };
+              X = { c, b: B[0] };
+              Y = { c: x, b: B[1] };
+              P = () => {
+                p(X);
+                p(Y);
+                setTimeout(P, 99);
+              };
+              P();
+            </p>
+            <br>
+          </pre>
+        </div>
+        <br>
+        <a id="folder-butt" href="#"><h4>[Go Back]</h4></a>
+      </div>
+    </div>
+  </div>
