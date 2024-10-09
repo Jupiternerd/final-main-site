@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perpendicular</title>
+<style>
+    body {
+        background-color: black;
+    }
+    #a1, #a2, #b1, #b2 {
+        color: white;
+        text-decoration: underline;
+        font-size: 2em;
+        
+    }
+    #a2, #b2 {
+        color: red;
+        text-decoration: underline white;
+        rotate: 90deg;
+    }
+    #container-a {
+        position: absolute;
+    }
+    #container-b {
+        position: absolute;
+    }
+</style>
+</head>
+<body>
+    <div id="container-a">
+        <div id="a1"></div>
+        <div id="a2"></div>
+    </div>
+    <div id="container-b">
+        <div id="b1"></div>
+        <div id="b2"></div>
+    </div>
+    <script>
+        const d1 = document.querySelector("#container-a"),
+            d2 = document.querySelector("#container-b"),
+            a1 = document.querySelector("#a1"),
+            a2 = document.querySelector("#a2"),
+            b1 = document.querySelector("#b1"),
+            b2 = document.querySelector("#b2");
+        
+        const content = [
+            "Why did the perpendicular line never get lost?",
+            "What do perpendicular lines say when they meet?",
+            "What did one perpendicular line say to the other during the interview?"
+        ];
+        const reply = [
+            "Because it always knows how to take the right angle! AHHA",
+            "\"We’re at the right place at the right time!\"",
+            "\"I think we’re on the right angle for this job!\""
+        ];
+        
+        let curContent = 0;
+        let index = 0;
+        let deleting = false;
+
+        function randomizePositionAndRotation(element) {
+            const randomX = Math.random() * (window.innerWidth - 400);
+            const randomY = Math.random() * (window.innerHeight - 200);
+            const randomRotation = Math.random() * 360;
+            element.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotation}deg)`;
+        }
+
+        function write() {
+            if (!deleting) {
+                // Writing the content
+                if (index < content[curContent].length) {
+                    a1.textContent += content[curContent].charAt(index);
+                    b1.textContent += content[curContent].charAt(index);
+                } else if (index < content[curContent].length + reply[curContent].length) {
+                    a2.textContent += reply[curContent].charAt(index - content[curContent].length);
+                    b2.textContent += reply[curContent].charAt(index - content[curContent].length);
+                } else {
+                    deleting = true;
+                }
+                index++;
+            } else {
+                // Deleting the content
+                if (a2.textContent.length > 0) {
+                    a2.textContent = a2.textContent.slice(0, -1);
+                    b2.textContent = b2.textContent.slice(0, -1);
+                } else if (a1.textContent.length > 0) {
+                    a1.textContent = a1.textContent.slice(0, -1);
+                    b1.textContent = b1.textContent.slice(0, -1);
+                } else {
+                    deleting = false;
+                    index = 0;
+                    curContent = (curContent + 1) % content.length;
+                    randomizePositionAndRotation(d1);
+                    randomizePositionAndRotation(d2);
+                }
+            }
+            setTimeout(write, 100);
+        }
+
+        randomizePositionAndRotation(d1);
+        randomizePositionAndRotation(d2);
+        
+        setTimeout(write, 100);
+    </script>
+</body>
+</html>
